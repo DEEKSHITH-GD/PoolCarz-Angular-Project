@@ -1,0 +1,44 @@
+.container-styles{
+	position: relative; 
+	top: 180px;
+	width:50%
+}
+
+.padding{
+  padding-bottom:0px;
+  margin-bottom:0px;
+}
+
+.clicked {
+  background-color: #20b2aa; /* Change this to your desired color */
+  color: white; /* Change this to your desired text color */
+}
+
+.btn-group{
+  justify-content: space-around;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.btn-primary{
+  margin-right: 20px;
+}
+
+.custom-table {
+  width: 94%; /* Adjust the width as needed */
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.custom-table th {
+  width: 20%; /* Adjust the width of th elements as needed */
+  /* Optionally, you can add additional styling for the table headings */
+  text-align: center; /* Center align the text in the headings */
+  /* Add any other styles you require */
+}
+
+.table-header {
+  background-color: #337ab7; /* Change this to your desired background color */
+  color: #fff; /* Change this to your desired text color */
+  font-weight: bold; /* Optional: Make the text bold */
+}

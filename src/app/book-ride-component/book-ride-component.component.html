@@ -1,0 +1,72 @@
+<div class="container container-styles">
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Book a Ride</div>
+	  <div class="panel-body">
+		<div class="row">
+		  <span class="text-center text-styles">
+			<p>
+			  Pool Carz is an online application that enables users to share rides with others. You can either book a ride or offer a ride. Did we mention that this app is advertisement-free? On top of that, it's free of cost too! So what are you waiting for? Check out the rides available and start PCing!!
+			</p>
+		  </span>
+		  <br />
+  
+		  <div class="text-center">
+			<div class="row">
+			  <button (click)="changeColor(1)" class="btn btn-primary" [class.clicked]="isClicked[1]">Show All Rides</button>
+			  <div class="btn-group" *ngIf="showAdditionalButtons">
+				<!-- Adding Additional buttons on click -->
+				<button (click)="changeColor(3); changeCategory('To Office')" class="btn btn-primary" [class.clicked]="isClicked[3]">To Office</button>
+				<button (click)="changeColor(4); changeCategory('From Office')" class="btn btn-primary" [class.clicked]="isClicked[4]">From Office</button>
+				<button (click)="changeColor(5); changeCategory('Others')" class="btn btn-primary" [class.clicked]="isClicked[5]">Others</button>
+			  </div>
+			</div>
+			<div *ngIf="showTable">
+			  <br /><br />
+			  <div class="col">
+				<p>Please select a ride!</p>
+			  </div>
+			  <br />
+			  <div class="container">
+				<div class="row justify-content-center">
+				  <div class="col-lg-8">
+					<table class="table table-bordered custom-table">
+					  <thead class="table-header">
+						<tr>
+						  <th class="text-center">Start Point</th>
+						  <th class="text-center">End Point</th>
+						  <th class="text-center">Seats Available</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr appMouseHoverDirective *ngFor="let ride of rides | rideFilterPipe:selectedCategory" (click)="selectRide(ride)">
+						  <td>{{ ride.startLocation }}</td>
+						  <td>{{ ride.destination }}</td>
+						  <td>{{ ride.seatsAvailable }}</td>
+						</tr>
+					  </tbody>
+					</table>
+				  </div>
+				</div>
+			  </div>
+			</div>
+			<div *ngIf="selectedRide">
+			  <!-- Load the RideDetailsComponent with the selected ride -->`
+			  <br/><br/>
+			  	<app-ride-details [ride]="selectedRide" [userName]="userName"
+					(TableOff)="TableOff()"
+					(TableOn)="TableOn()"
+			  		(handleBooking)="handleBooking(bookingId)" 
+			  		(cannotBookOwnRide)="handleCannotBookOwnRide($event)"
+			  		(cancelRide)="cancelRide()">
+				</app-ride-details>
+			</div>
+			<br />
+			<div class="col">
+			  <button (click)="changeColor(2); offerARide()" class="btn btn-primary" [class.clicked]="isClicked[2]">Offer A Ride</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+  

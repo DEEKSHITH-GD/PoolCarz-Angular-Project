@@ -1,0 +1,41 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      Ride Details
+    </div>
+    <div class="panel-body">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Car</th>
+            <th>Seats Left</th>
+            <th>Pick-up Point</th>
+            <th>Destination</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ ride.id }}</td>
+            <td>{{ ride.name }}</td>
+            <td>{{ ride.car }}</td>
+            <td>{{ ride.seatsAvailable }}</td>
+            <td>{{ ride.startLocation }}</td>
+            <td>{{ ride.destination }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="notAvailabe" class="booking-message1">
+        Ride Not Available
+      </div>
+      <div *ngIf="isBooked && !isCannotBookOwnRide && userName !== ride.name" class="booking-message">
+        Booking done. Your booking id: {{ bookingId }}
+      </div>
+      <div *ngIf="isCannotBookOwnRide" class="booking-message1">
+        Cannot book your own ride!
+      </div>
+      <button class="btn" [ngClass]="{'btn-primary': !isBooked, 'btn-danger': isBooked}" (click)="toggleBooking()">
+        {{ isBooked ? 'Cancel Booked Ride' : 'Book' }}
+      </button>
+    </div>
+  </div>

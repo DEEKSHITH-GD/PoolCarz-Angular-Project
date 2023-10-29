@@ -1,0 +1,24 @@
+.panel-primary{
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.panel-heading{
+    text-align: left;
+}
+
+th{
+    text-align: center;
+}
+
+td{
+    text-align: center;
+}
+
+.booking-message{
+    color: rgb(0, 87, 187);
+}
+
+.booking-message1{
+    color: red;
+}

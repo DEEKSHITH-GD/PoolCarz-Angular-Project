@@ -1,0 +1,27 @@
+<!-- Login form-->
+<div class="container container-styles">
+	<div class="col-xs-7 col-xs-offset-3">
+	  <div class="panel panel-primary">
+		<div class="panel-heading">Login</div>
+		<div class="panel-body padding">
+		  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+			<div class="form-group">
+			  <label for="userName">Username</label>
+			  <input type="text" id="userName" name="userName" class="form-control" formControlName="userName" />
+			  <div *ngIf="loginForm.get('userName')?.hasError('required')" class="text-danger">Username is required.</div>
+			  <div *ngIf="loginForm.get('userName')?.hasError('minlength')" class="text-danger">Username must be at least 3 characters long.</div>
+			</div>
+			<!-- Password field and validation messages similarly -->
+			<div class="form-group">
+			  <label for="password">Password</label>
+			  <input type="password" id="password" name="password" class="form-control" formControlName="password" />
+			  <div *ngIf="loginForm.get('password')?.hasError('required')" class="text-danger">Password is required.</div>
+			  <div *ngIf="loginForm.get('password')?.hasError('minlength')" class="text-danger">Password must be at least 6 characters long.</div>
+			</div>
+			<button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Submit</button>
+		  </form>
+		</div>
+	  </div>
+	</div>
+  </div>
+  

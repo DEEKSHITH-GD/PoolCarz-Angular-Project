@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Car Ride Registration Form</div>
+      <div class="panel-body">
+        <form [formGroup]="rideForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" formControlName="name">
+            <div *ngIf="rideForm.get('name')?.hasError('required')" class="text-danger">Name is required.</div>
+          </div>
+  
+          <div class="form-group">
+            <label for="startLocation">Start Location</label>
+            <input type="text" id="startLocation" class="form-control" formControlName="startLocation">
+            <div *ngIf="rideForm.get('startLocation')?.hasError('required')" class="text-danger">Start Location is required.</div>
+          </div>
+  
+          <div class="form-group">
+            <label for="destination">Destination</label>
+            <input type="text" id="destination" class="form-control" formControlName="destination">
+            <div *ngIf="rideForm.get('destination')?.hasError('required')" class="text-danger">Destination is required.</div>
+          </div>
+  
+          <div class="form-group">
+            <label for="car">Car</label>
+            <input type="text" id="car" class="form-control" formControlName="car">
+            <div *ngIf="rideForm.get('car')?.hasError('required')" class="text-danger">Car is required.</div>
+          </div>
+  
+          <div class="form-group">
+            <label for="seatsAvailable">Seats Available</label>
+            <input type="number" id="seatsAvailable" class="form-control" formControlName="seatsAvailable">
+            <div *ngIf="rideForm.get('seatsAvailable')?.hasError('required')" class="text-danger">Seats Available is required.</div>
+            <div *ngIf="rideForm.get('seatsAvailable')?.hasError('validSeats')" class="text-danger">Seats Available must be between 0 and 8.</div>
+          </div>
+  
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" [disabled]="rideForm.invalid">Submit</button>
+            <button type="button" class="btn btn-primary" (click)="goBack()">Go Back</button>
+          </div>
+        </form>
+        <div class="text-success" *ngIf="rideAddedSuccessfully">Added successfully!</div>
+      </div>
+    </div>
+  </div>
+  
